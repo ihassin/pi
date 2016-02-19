@@ -1,0 +1,74 @@
+---
+  - name: Update apt cache if needed
+    apt: update_cache=yes cache_valid_time=3600
+
+  - name: Upgrade OS
+    apt: upgrade=dist force=yes
+
+  - name: Install needed packages
+    apt: pkg={{item}} state=installed
+    with_items:
+      - cron
+      - logrotate
+      - curl
+      - git
+      - tmux
+      - pmount
+      - smbclient
+      - samba
+      - samba-common-bin
+      - ufw
+      - xrdp
+      - bundler
+      - libmysqlclient-dev
+      - python-mysqldb
+      - mysql-client
+      - build-essential
+      - nginx
+      - xvfb
+
+
+  - name: Check if anything needs autoremoving
+    shell: apt-get -y --dry-run autoremove | grep -q "0 to remove"
+    register: check_autoremove
+    ignore_errors: True
+    changed_when: False
+    always_run: True
+
+  - name: Autoremove unused packages
+    command: apt-get -y autoremove
+    when: "check_autoremove.rc != 0"
+
+  - name: Set vi preferences
+    copy: src=vimrc dest=/home/{{user}}/.vimrc owner={{user}}
+
+  - name: Make sure user is part of plugdev
+    user: name={{user}} groups="plugdev"
+
+  - name: FW Allow everything
+    ufw: state=enabled policy=allow
+
+  - name: UFW allow SSH
+    ufw: rule=allow name={{item}}
+    with_items:
+      - OpenSSH
+
+  - name: Copy switch.py
+    copy: src=switch.py dest=/home/{{user}} owner={{user}}
+
+#  - name: FW Allow everything
+#    ufw: state=enabled policy=allow
+#
+#  - name: Disallow password authentication
+#    lineinfile: dest=/etc/ssh/sshd_config
+#                regexp="^PasswordAuthentication"
+#                line="PasswordAuthentication no"
+#                state=present
+#    notify: Restart ssh
+#
+#  - name: Disallow root SSH access
+#    lineinfile: dest=/etc/ssh/sshd_config
+#                regexp="^PermitRootLogin"
+#                line="PermitRootLogin no"
+#                state=present
+#    notify: Restart ssh

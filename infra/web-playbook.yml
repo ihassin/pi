@@ -1,0 +1,8 @@
+- hosts: webserver
+  sudo: true
+  roles:
+    - common
+    - role: mikolak.raspi-config
+      raspi_config_replace_user:
+        name: pi
+        path_to_ssh_key: "~/.ssh/id_rsa.pub"
