@@ -2,8 +2,8 @@
   - name: Update apt cache if needed
     apt: update_cache=yes cache_valid_time=3600
 
-#  - name: Upgrade OS
-#    apt: upgrade=dist force=yes
+  - name: Upgrade OS
+    apt: upgrade=dist force=yes
 
   - name: Remove components
     apt: pkg={{item}} state=absent purge=yes force=yes
@@ -20,29 +20,37 @@
   - name: Install needed packages
     apt: pkg={{item}} state=installed
     with_items:
+      - bluez
+      - build-essential
+      - bundler
+      - cmake
       - cron
-      - logrotate
       - curl
+      - emacs
       - git
-      - tmux
+      - glusterfs-server
+      - jenkins
+      - keepalived
+      - libmysqlclient-dev
+      - libsqlite3-dev
+      - libusb-dev
+      - libdbus-1-dev
+      - libglib2.0-dev
+      - libudev-dev
+      - libical-dev
+      - libreadline-dev
+      - logrotate
+      - nginx
       - pmount
       - smbclient
       - samba
       - samba-common-bin
-      - ufw
-      - xrdp
-      - bundler
-      - libmysqlclient-dev
-      - libsqlite3-dev
-      - build-essential
-      - nginx
-      - keepalived
-      - xvfb
-      - glusterfs-server
-      - vim
-      - emacs
-      - jenkins
       - screen
+      - tmux
+      - ufw
+      - vim
+      - xrdp
+      - xvfb
 
 #First I added the key for the LTS version to my repository
 #
@@ -95,5 +103,3 @@
   - name: Set {{user}} as sudoer
     lineinfile: dest=/etc/sudoers line="{{user}} ALL=(ALL) NOPASSWD:ALL"
 
-  - name: Copy switch.py
-    copy: src=switch.py dest=/home/{{user}} owner={{user}}
