@@ -76,12 +76,6 @@
     command: apt-get -y autoremove
     when: "check_autoremove.rc != 0"
 
-  - name: Set vi preferences
-    copy: src=vimrc dest=/home/{{user}}/.vimrc owner={{user}}
-
-  - name: Make sure user is part of plugdev
-    user: name={{user}} groups="plugdev"
-
   - name: FW Allow everything
     ufw: state=enabled policy=allow
 
@@ -90,18 +84,37 @@
     with_items:
       - OpenSSH
 
+  - name: Create the deploy user
+    user: name={{item}} comment="A user" generate_ssh_key=yes ssh_key_bits=2048 state=present password={{password}} shell=/bin/bash
+    with_items:
+      - "{{user}}"
+
   - name: Copy bitbucket ssh keys to the user's .ssh directory
-    copy: src=~/.ssh/id_rsa_bitbucket dest=/home/{{user}}/.ssh/id_rsa_bitbucket
+    copy: src=~/.ssh/id_rsa_bitbucket dest=/home/{{item}}/.ssh/id_rsa_bitbucket
+    with_items:
+      - "{{user}}"
 
   - name: Set up ssh config file
-    copy: src=ssh_config dest=/home/{{user}}/.ssh/config owner={{user}}
-
-  - name: Create the deploy user
-    user: name={{user}} comment="deploy user" generate_ssh_key=yes ssh_key_bits=2048 state=present password={{password}} shell=/bin/bash
+    copy: src=ssh_config dest=/home/{{item}}/.ssh/config owner={{item}}
+    with_items:
+      - "{{user}}"
 
   - name: Copy ssh keys to the user's .ssh directory
-    copy: src=ita.pub dest=/home/{{user}}/.ssh/authorized_keys mode=0700 owner={{user}} group={{user}}
+    copy: src=ita.pub dest=/home/{{item}}/.ssh/authorized_keys mode=0700 owner={{item}} group={{item}}
+    with_items:
+      - "{{user}}"
 
   - name: Set {{user}} as sudoer
-    lineinfile: dest=/etc/sudoers line="{{user}} ALL=(ALL) NOPASSWD:ALL"
+    lineinfile: dest=/etc/sudoers line="{{item}} ALL=(ALL) NOPASSWD:ALL"
+    with_items:
+      - "{{user}}"
 
+  - name: Set vi preferences
+    copy: src=vimrc dest=/home/{{item}}/.vimrc owner={{item}}
+    with_items:
+      - "{{user}}"
+
+  - name: Make sure user is part of plugdev
+    user: name={{item}} groups="plugdev"
+    with_items:
+      - "{{user}}"
