@@ -31,6 +31,7 @@
       - glusterfs-server
       - jenkins
       - keepalived
+      - libbluetooth-dev
       - libmysqlclient-dev
       - libsqlite3-dev
       - libusb-dev
@@ -39,6 +40,7 @@
       - libudev-dev
       - libical-dev
       - libreadline-dev
+      - linux-headers
       - logrotate
       - nginx
       - pmount
