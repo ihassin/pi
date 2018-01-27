@@ -20,6 +20,7 @@
   - name: Install needed packages
     apt: pkg={{item}} state=installed
     with_items:
+      - autoconf
       - bluez
       - bluez-tools
       - build-essential
@@ -34,6 +35,7 @@
       - jenkins
       - keepalived
       - libbluetooth-dev
+      - libcrypto++-dev
       - libcurl4-openssl-dev
       - libffi-dev
       - libmysqlclient-dev
@@ -51,6 +53,7 @@
       - libyaml-dev
       - logrotate
       - nginx
+      - oracle-java8-jdk
       - pmount
       - python-software-properties
       - smbclient
@@ -61,6 +64,7 @@
       - sqlite3
       - tmux
       - ufw
+      - uuid-dev
       - vim
       - xrdp
       - xvfb

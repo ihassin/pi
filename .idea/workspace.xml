@@ -4,6 +4,7 @@
     <list default="true" id="78795003-ebfe-4dd8-ac71-2066269a9c6c" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/infra/roles/common/tasks/main.yml" afterPath="$PROJECT_DIR$/infra/roles/common/tasks/main.yml" />
       <change beforePath="$PROJECT_DIR$/infra/roles/common/vars/main.yml" afterPath="$PROJECT_DIR$/infra/roles/common/vars/main.yml" />
+      <change beforePath="$PROJECT_DIR$/infra/web-playbook.retry" afterPath="$PROJECT_DIR$/infra/web-playbook.retry" />
     </list>
     <ignored path="pi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,8 +27,8 @@
       <file leaf-file-name="main.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/infra/roles/common/tasks/main.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="56" column="14" lean-forward="false" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+            <state relative-caret-position="315">
+              <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -393,7 +394,7 @@
       <workItem from="1516657625985" duration="600000" />
       <workItem from="1516670439500" duration="12000" />
       <workItem from="1516808551500" duration="191000" />
-      <workItem from="1517019816300" duration="822000" />
+      <workItem from="1517019816300" duration="922000" />
     </task>
     <task id="LOCAL-00001" summary="Installs Ruby and Rails">
       <created>1496661712397</created>
@@ -420,7 +421,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40738000" />
+    <option name="totallyTimeSpent" value="40838000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="23" width="1537" height="961" extended-state="0" />
@@ -746,8 +747,8 @@
     <entry file="file:///Volumes/Home Directory/projects/bunget/README.md" />
     <entry file="file://$PROJECT_DIR$/infra/roles/common/tasks/main.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="56" column="14" lean-forward="false" selection-start-line="56" selection-start-column="14" selection-end-line="56" selection-end-column="14" />
+        <state relative-caret-position="315">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
       </provider>
