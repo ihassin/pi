@@ -21,6 +21,7 @@
     apt: pkg={{item}} state=installed
     with_items:
       - bluez
+      - bluez-tools
       - build-essential
       - bundler
       - cmake
@@ -28,10 +29,13 @@
       - curl
       - emacs
       - git
+      - git-core
       - glusterfs-server
       - jenkins
       - keepalived
       - libbluetooth-dev
+      - libcurl4-openssl-dev
+      - libffi-dev
       - libmysqlclient-dev
       - libsqlite3-dev
       - libusb-dev
@@ -41,18 +45,26 @@
       - libical-dev
       - libreadline-dev
       - linux-headers
+      - libssl-dev
+      - libxml2-dev
+      - libxslt1-dev
+      - libyaml-dev
       - logrotate
       - nginx
       - pmount
+      - python-software-properties
       - smbclient
+      - rfkill
       - samba
       - samba-common-bin
       - screen
+      - sqlite3
       - tmux
       - ufw
       - vim
       - xrdp
       - xvfb
+      - zlib1g-dev
 
 #First I added the key for the LTS version to my repository
 #
@@ -84,7 +96,7 @@
     with_items:
       - OpenSSH
 
-  - name: Create the deploy user
+  - name: Create a user
     user: name={{item}} comment="A user" generate_ssh_key=yes ssh_key_bits=2048 state=present password={{password}} shell=/bin/bash
     with_items:
       - "{{user}}"
