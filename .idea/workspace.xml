@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78795003-ebfe-4dd8-ac71-2066269a9c6c" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/infra/roles/common/tasks/main.yml" afterPath="$PROJECT_DIR$/infra/roles/common/tasks/main.yml" />
-      <change beforePath="$PROJECT_DIR$/infra/roles/common/vars/main.yml" afterPath="$PROJECT_DIR$/infra/roles/common/vars/main.yml" />
-      <change beforePath="$PROJECT_DIR$/infra/web-playbook.retry" afterPath="$PROJECT_DIR$/infra/web-playbook.retry" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="pi.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,11 +23,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/infra/roles/common/tasks/main.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
               <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="6" lean-forward="false" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -47,6 +56,7 @@
       <find>here</find>
       <find>sudo ./bunget 0</find>
       <find>suppotred</find>
+      <find>idea</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -68,6 +78,7 @@
         <option value="$PROJECT_DIR$/infra/roles/common/vars/main.yml" />
         <option value="/Volumes/Home Directory/projects/bunget/README.md" />
         <option value="$PROJECT_DIR$/infra/roles/common/tasks/main.yml" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -394,7 +405,7 @@
       <workItem from="1516657625985" duration="600000" />
       <workItem from="1516670439500" duration="12000" />
       <workItem from="1516808551500" duration="191000" />
-      <workItem from="1517019816300" duration="922000" />
+      <workItem from="1517019816300" duration="995000" />
     </task>
     <task id="LOCAL-00001" summary="Installs Ruby and Rails">
       <created>1496661712397</created>
@@ -421,7 +432,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40838000" />
+    <option name="totallyTimeSpent" value="40911000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="63" y="23" width="1537" height="961" extended-state="0" />
@@ -707,13 +718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="7" lean-forward="false" selection-start-line="44" selection-start-column="7" selection-end-line="44" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/infra/roles/common/files/ita.pub">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -749,6 +753,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="6" lean-forward="false" selection-start-line="0" selection-start-column="6" selection-end-line="0" selection-end-column="6" />
           <folding />
         </state>
       </provider>
