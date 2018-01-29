@@ -46,7 +46,6 @@
       - libudev-dev
       - libical-dev
       - libreadline-dev
-      - linux-headers
       - libssl-dev
       - libxml2-dev
       - libxslt1-dev
@@ -56,8 +55,8 @@
       - oracle-java8-jdk
       - pmount
       - python-software-properties
-      - smbclient
       - rfkill
+      - smbclient
       - samba
       - samba-common-bin
       - screen
