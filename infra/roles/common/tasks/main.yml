@@ -29,6 +29,7 @@
       - cron
       - curl
       - emacs
+      - gdbserver
       - git
       - git-core
       - glusterfs-server
@@ -38,7 +39,7 @@
       - libcrypto++-dev
       - libcurl4-openssl-dev
       - libffi-dev
-      - libmysqlclient-dev
+      - libmariadbclient-dev
       - libsqlite3-dev
       - libusb-dev
       - libdbus-1-dev
@@ -51,10 +52,10 @@
       - libxslt1-dev
       - libyaml-dev
       - logrotate
+      - netatalk
       - nginx
       - oracle-java8-jdk
       - pmount
-      - python-software-properties
       - rfkill
       - smbclient
       - samba
@@ -67,6 +68,7 @@
       - vim
       - xrdp
       - xvfb
+      - xz-utils
       - zlib1g-dev
 
 #First I added the key for the LTS version to my repository
@@ -104,11 +106,6 @@
     with_items:
       - "{{user}}"
 
-  - name: Copy bitbucket ssh keys to the user's .ssh directory
-    copy: src=~/.ssh/id_rsa_bitbucket dest=/home/{{item}}/.ssh/id_rsa_bitbucket
-    with_items:
-      - "{{user}}"
-
   - name: Set up ssh config file
     copy: src=ssh_config dest=/home/{{item}}/.ssh/config owner={{item}}
     with_items:
@@ -129,7 +126,33 @@
     with_items:
       - "{{user}}"
 
+  - name: Set git preferences
+    copy: src=gitconfig dest=/home/{{item}}/.gitconfig owner={{item}}
+    with_items:
+      - "{{user}}"
+
+  - name: Set git ignore
+    copy: src=gitignore dest=/home/{{item}}/.gitignore_global owner={{item}}
+    with_items:
+      - "{{user}}"
+
   - name: Make sure user is part of plugdev
     user: name={{item}} groups="plugdev"
     with_items:
       - "{{user}}"
+
+  - name: Copy bitbucket ssh keys to the user's .ssh directory
+    copy: src=~/.ssh/id_rsa_bitbucket dest=/home/{{item}}/.ssh/id_rsa_bitbucket
+    with_items:
+      - "{{user}}"
+
+  - name: Copy github ssh keys to the user's .ssh directory
+    copy: src=~/.ssh/id_rsa dest=/home/{{item}}/.ssh/id_rsa_github
+    with_items:
+      - "{{user}}"
+
+  - name: Set up samba sharing
+    action: template src=smb.conf dest=/etc/samba
+    notify: Restart samba
+
+
