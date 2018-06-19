@@ -126,6 +126,11 @@
     with_items:
       - "{{user}}"
 
+  - name: Set bash preferences
+    copy: src=bash_profile dest=/home/{{item}}/.bash_profile owner={{item}}
+    with_items:
+      - "{{user}}"
+
   - name: Set git preferences
     copy: src=gitconfig dest=/home/{{item}}/.gitconfig owner={{item}}
     with_items:
@@ -154,5 +159,3 @@
   - name: Set up samba sharing
     action: template src=smb.conf dest=/etc/samba
     notify: Restart samba
-
-
