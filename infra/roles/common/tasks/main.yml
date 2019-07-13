@@ -5,71 +5,40 @@
   - name: Upgrade OS
     apt: upgrade=dist force=yes
 
-  - name: Remove components
-    apt: pkg={{item}} state=absent purge=yes force=yes
-    with_items:
-      - wolfram-engine
-      - scratch
-      - gnome*
-      - gvfs*
-      - penguinspuzzle
-      - lightdm
-      - cups*
-      - minecraft-pi
+  - name: Remove unwanted services
+    package:
+      name: ['wolfram-engine', 'scratch', 'gnome*', 'gvfs*', 'penguinspuzzle', 'lightdm', 'cups*', 'minecraft-pi']
+      state: absent
+      purge: yes
+      force: yes
 
-  - name: Install needed packages
-    apt: pkg={{item}} state=installed
-    with_items:
-      - autoconf
-      - bluez
-      - bluez-tools
-      - build-essential
-      - bundler
-      - cmake
-      - cron
-      - curl
-      - emacs
-      - gdbserver
-      - git
-      - git-core
-      - glusterfs-server
-      - jenkins
-      - keepalived
-      - libbluetooth-dev
-      - libcrypto++-dev
-      - libcurl4-openssl-dev
-      - libffi-dev
-      - libmariadbclient-dev
-      - libsqlite3-dev
-      - libusb-dev
-      - libdbus-1-dev
-      - libglib2.0-dev
-      - libudev-dev
-      - libical-dev
-      - libreadline-dev
-      - libssl-dev
-      - libxml2-dev
-      - libxslt1-dev
-      - libyaml-dev
-      - logrotate
-      - netatalk
-      - nginx
-      - oracle-java8-jdk
-      - pmount
-      - rfkill
-      - smbclient
-      - samba
-      - samba-common-bin
-      - screen
-      - sqlite3
-      - tmux
-      - ufw
-      - uuid-dev
-      - vim
-      - xrdp
-      - xvfb
-      - xz-utils
-      - zlib1g-dev
+  - name: Add wanted services
+    package:
+      name: ['autoconf',
+             'build-essential',
+             'bundler',
+             'cron',
+             'curl',
+             'git',
+             'git-core',
+             'keepalived',
+             'libsqlite3-dev',
+             'libreadline-dev',
+             'libssl-dev',
+             'libxml2-dev',
+             'libxslt1-dev',
+             'libyaml-dev',
+             'logrotate',
+             'netatalk',
+             'nginx',
+             'screen',
+             'sqlite3',
+             'tmux',
+             'ufw',
+             'uuid-dev',
+             'xrdp',
+             'xz-utils']
+      state: installed
 
 #First I added the key for the LTS version to my repository
 #
@@ -94,7 +63,7 @@
     when: "check_autoremove.rc != 0"
 
   - name: FW Allow everything
-    ufw: state=enabled policy=allow
+    ufw: state=enabled policy=allow direction=incoming
 
   - name: UFW allow SSH
     ufw: rule=allow name={{item}}
